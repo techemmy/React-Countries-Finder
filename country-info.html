@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/75ff9ecfe2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="./src/index.css">
+  <title>Country Name</title>
+</head>
+
+<body>
+  <header class="container feint__shadow">
+    <nav>
+      <a href="index.html">
+        <h1>Where in the world?</h1>
+      </a>
+      <button type="button" class="curved__border" id="mode__toggler">Dark Mode</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="country__details">
+      <button type="button" class="curved__border" id="back__btn">Back</button>
+      <div id="country">
+        <div class="flag">
+          <img src="https://flagcdn.com/al.svg" alt="%Country Flag">
+        </div>
+        <aside class="country__info">
+          <h2>Belgium</h2>
+          <section class="country__text__info">
+            <article class="country__card__info">
+              <p><span class="country__card__title">Native Language: </span>English</p>
+              <p><span class="country__card__title">Population: </span>11,319,232</p>
+              <p><span class="country__card__title">Region: </span>Europe</p>
+              <p><span class="country__card__title">Sub Region: </span>Western Europe</p>
+              <p><span class="country__card__title">Capital: </span>Brussels</p>
+            </article>
+            <article class="country__card__info">
+              <p><span class="country__card__title">Top level Domain: </span>.be</p>
+              <p><span class="country__card__title">Currencies: </span>Euros</p>
+              <p><span class="country__card__title">Languages: </span>French, Dutch, German</p>
+            </article>
+          </section>
+          <div class="border__countries">
+            <span class="country__card__title">Border Countries: </span>
+            <button>France</button>
+            <button>Germany</button>
+            <button>Netherlands</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- <div id="root"></div> -->
+  <!-- <script type="module" src="/src/main.jsx"></script> -->
+</body>
+
+</html>
