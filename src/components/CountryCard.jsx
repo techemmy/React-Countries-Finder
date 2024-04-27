@@ -4,7 +4,9 @@ export default function CountryCard({ name, population, region, capital, imageUR
   return (
     <a href="country-info.html">
       <div className="country__card feint__shadow curved__border">
-        <img src={imageURL} alt={`${name} logo`} />
+        <div className="country__img__container">
+          <img className="country__img" loading="lazy" src={imageURL} alt={`${name} logo`} />
+        </div>
         <article className="country__card__info">
           <h3>{name}</h3>
           <p><span className="country__card__title">Population:</span> {population}</p>

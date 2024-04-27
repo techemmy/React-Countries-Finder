@@ -60,7 +60,7 @@ button:active {
 }
 
 .feint__shadow {
-  box-shadow: 0 3px 3px var(--shadow-color);
+  box-shadow: 0 3px 3px 3px var(--shadow-color);
 }
 
 .container {
@@ -85,7 +85,7 @@ header nav {
 }
 
 #mode__toggler {
-  background-image: url("../public/moon-regular.svg");
+  background-image: url("../moon-regular.svg");
 }
 
 main {
@@ -116,7 +116,7 @@ input {
   width: 100%;
   font-size: 1rem;
   max-width: 500px;
-  background-image: url("../public/magnifying-glass-solid.svg");
+  background-image: url("../magnifying-glass-solid.svg");
   background-repeat: no-repeat;
   background-size: 1.2rem;
   background-color: var(--light-bg);
@@ -150,6 +150,16 @@ select.select__region {
   box-shadow: 10px 10px 12px var(--shadow-color);
 }
 
+.country__img__container {
+  height: 50%;
+}
+
+img.country__img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
 .country__card .country__card__info {
   padding: 1rem 1.7rem 2rem;
   font-weight: 300;
@@ -170,7 +180,7 @@ span.country__card__title {
 
 #back__btn {
   background-color: var(--light-bg);
-  background-image: url("../public/arrow-left.svg");
+  background-image: url("../arrow-left.svg");
 }
 #back__btn:active {
   box-shadow: 0 0 3px 3px var(--shadow-color);
@@ -226,20 +236,20 @@ span.country__card__title {
     --text-color: var(--white);
     --dark-bg: hsl(207, 26%, 17%);
     --light-bg: hsl(211.3deg 20.72% 21.76%);
-    --shadow-color: hsl(207, 26%, 17%);
+    --shadow-color: hsl(207, 21%, 14%);
     --input-color: var(--white);
   }
 
   input {
-    background-image: url("../public/magnifying-glass-solid-light.svg");
+    background-image: url("../magnifying-glass-solid-light.svg");
   }
 
   #mode__toggler {
-    background-image: url("../public/moon-solid.svg");
+    background-image: url("../moon-solid.svg");
   }
 
   #back__btn {
-    background-image: url("../public/arrow-left-light.svg");
+    background-image: url("../arrow-left-light.svg");
   }
 }
 
