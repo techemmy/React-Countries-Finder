@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-export default function CountryCard({ name, population, region, capital, imageURL }) {
+export default function CountryCard({ name, population, region, capital, imageURL, isFallback }) {
   return (
-    <a href="country-info.html">
+    <Link to={isFallback ? '' : `/country/${name}`}>
       <div className="country__card feint__shadow curved__border">
         <div className="country__img__container">
           <img className="country__img" loading="lazy" src={imageURL} alt={`${name} logo`} />
@@ -14,7 +15,7 @@ export default function CountryCard({ name, population, region, capital, imageUR
           <p><span className="country__card__title">Capital:</span> {capital}</p>
         </article>
       </div>
-    </a>
+    </Link>
   )
 }
 

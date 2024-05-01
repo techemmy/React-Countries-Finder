@@ -11,6 +11,7 @@ export default function CountryListFallback({ countryCount }) {
       capital="Loading..."
       region="Loading..."
       imageURL="loading-gif.gif"
+      isFallback
     />
     cards.push(card)
   }
