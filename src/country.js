@@ -1,35 +1,51 @@
-export async function getCountries(q = "", region) {
-  let request;
-  if (q !== "") {
-    request = await fetch(
-      `https://restcountries.com/v3.1/name/${q}?fields=name,flags,population,region,capital`,
-    );
-    return { countries: await request.json(), q };
-  }
+export async function getCountries(q, region) {
+  let countries;
 
   const cachedCountries = JSON.parse(localStorage.getItem("countries"));
   if (cachedCountries && cachedCountries.length > 0) {
-    return { countries: cachedCountries, q };
-  }
-
-  if (!request) {
-    request = await fetch(
+    countries = cachedCountries;
+  } else if (!cachedCountries || cachedCountries.length <= 0) {
+    const request = await fetch(
       "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital",
     );
+    countries = await request.json();
+    localStorage.setItem("countries", JSON.stringify(countries));
+  } else {
+    countries = [];
   }
 
-  if (request.status !== 200) {
-    return { countries: [], q };
+  if (q && q !== "") {
+    countries = countries.filter((country) => {
+      return (
+        country.name.common.toLowerCase().includes(q.toLowerCase()) ||
+        country.name.official.toLowerCase().includes(q.toLowerCase())
+      );
+    });
   }
 
-  const countries = await request.json();
-  localStorage.setItem("countries", JSON.stringify(countries));
-  // return { countries, q };
-  return new Promise((res) => {
-    setTimeout(() => {
-      res({ countries, q });
-    }, 5000);
-  });
+  if (region && region !== "") {
+    countries = countries.filter((country) => {
+      return country.region.toLowerCase().includes(region.toLowerCase());
+    });
+  }
+
+  return countries;
+}
+
+export function getRegions(countries) {
+  let cachedRegions = JSON.parse(localStorage.getItem("regions"));
+  if (cachedRegions && cachedRegions.length > 0) {
+    return cachedRegions;
+  }
+
+  const regions = new Set(
+    countries.map((country) => {
+      return country.region;
+    }),
+  );
+
+  localStorage.setItem("regions", JSON.stringify(Array.from(regions)));
+  return regions;
 }
 
 export async function getCountry(countryName) {
@@ -58,10 +74,5 @@ export async function getCountry(countryName) {
   }
   country.borders = borderNames;
 
-  // return { country };
-  return new Promise((res) => {
-    setTimeout(() => {
-      res({ country });
-    }, 5000);
-  });
+  return { country };
 }

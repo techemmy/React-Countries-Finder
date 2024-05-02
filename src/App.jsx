@@ -4,8 +4,12 @@ import { Outlet, useNavigation } from 'react-router-dom';
 
 function App() {
   const navigation = useNavigation();
+  const loader = (
+    <div className="lds-ripple"><div></div><div></div></div>
+  )
   return (
     <>
+      {navigation.state === "loading" ? loader : null}
       <Header />
 
       <main
@@ -14,7 +18,6 @@ function App() {
             ? "container loading"
             : "container"}
       >
-        <div className="lds-ripple"><div></div><div></div></div>
         <Outlet />
       </main>
     </>

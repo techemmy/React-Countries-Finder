@@ -11,7 +11,7 @@ export default function Search({ q }) {
       className="feint__shadow curved__border"
       placeholder="Search for a country..."
       defaultValue={q}
-      onChange={(e) => submit(e.target.form)}
+      onChange={(e) => submit(e.target.form, { replace: q !== null })}
     />
   )
 }

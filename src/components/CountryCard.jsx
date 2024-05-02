@@ -10,9 +10,9 @@ export default function CountryCard({ name, population, region, capital, imageUR
         </div>
         <article className="country__card__info">
           <h3>{name}</h3>
-          <p><span className="country__card__title">Population:</span> {population}</p>
-          <p><span className="country__card__title">Region:</span> {region}</p>
-          <p><span className="country__card__title">Capital:</span> {capital}</p>
+          <p><span className="country__card__title">Population:</span> {population || '-'}</p>
+          <p><span className="country__card__title">Region:</span> {region || '-'}</p>
+          <p><span className="country__card__title">Capital:</span> {capital || '-'}</p>
         </article>
       </div>
     </Link>

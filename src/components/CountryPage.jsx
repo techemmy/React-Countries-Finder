@@ -24,16 +24,16 @@ export default function CountryPage() {
           <h3>Official Name: {country.name.official}</h3>
           <section className="country__text__info">
             <article className="country__card__info">
-              <p><span className="country__card__title">Native Name: </span>{country.nativeName[0]}</p>
-              <p><span className="country__card__title">Population: </span>{country.population.toLocaleString()}</p>
-              <p><span className="country__card__title">Region: </span>{country.region}</p>
-              <p><span className="country__card__title">Sub Region: </span>{country.subregion}</p>
-              <p><span className="country__card__title">Capital: </span>{country.capital}</p>
+              <p><span className="country__card__title">Native Name: </span>{country.nativeName[0] || '-'}</p>
+              <p><span className="country__card__title">Population: </span>{country.population.toLocaleString() || '-'}</p>
+              <p><span className="country__card__title">Region: </span>{country.region || '-'}</p>
+              <p><span className="country__card__title">Sub Region: </span>{country.subregion || '-'}</p>
+              <p><span className="country__card__title">Capital: </span>{country.capital || '-'}</p>
             </article>
             <article className="country__card__info">
-              <p><span className="country__card__title">Top level Domain: </span>{country.tld}</p>
-              <p><span className="country__card__title">Currencies: </span>{country.currencies}</p>
-              <p><span className="country__card__title">Languages: </span>{country.languages.join(', ')}</p>
+              <p><span className="country__card__title">Top level Domain: </span>{country.tld || '-'}</p>
+              <p><span className="country__card__title">Currencies: </span>{country.currencies || '-'}</p>
+              <p><span className="country__card__title">Languages: </span>{country.languages.join(', ') || '-'}</p>
             </article>
           </section>
           <div className="border__countries">

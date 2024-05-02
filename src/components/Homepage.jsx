@@ -5,13 +5,13 @@ import Search from "./Search";
 
 
 export default function Homepage() {
-  const { countries, q } = useLoaderData();
+  const { countries, regions, q, region } = useLoaderData();
   let response;
 
   if (countries.length > 0) {
     response = <CountryCardList countries={countries} />
   } else {
-    response = 'No Results Found'
+    response = 'No Results Found or Check your connection'
   }
 
   return (
@@ -19,7 +19,7 @@ export default function Homepage() {
       <section>
         <Form id="search__and__filter">
           <Search q={q} />
-          <FilterSelect />
+          <FilterSelect regions={regions} region={region} />
         </Form>
 
         <section id="countries__list">
