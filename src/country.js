@@ -45,7 +45,7 @@ export function getRegions(countries) {
   );
 
   localStorage.setItem("regions", JSON.stringify(Array.from(regions)));
-  return regions;
+  return Array.from(regions);
 }
 
 export async function getCountry(countryName) {
