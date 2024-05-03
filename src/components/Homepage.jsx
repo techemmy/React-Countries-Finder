@@ -2,6 +2,7 @@ import { Form, useLoaderData, useNavigation } from "react-router-dom";
 import CountryCardList from "./CountryCardList";
 import FilterSelect from "./FilterSelect";
 import Search from "./Search";
+import React from "react";
 
 
 export default function Homepage() {
@@ -13,6 +14,11 @@ export default function Homepage() {
   } else {
     response = 'No Results Found or Check your connection'
   }
+
+  React.useEffect(() => {
+    document.getElementById('search__input').value = q;
+    document.getElementById('region__filter').value = "";
+  }, [q])
 
   return (
     <>
