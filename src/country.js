@@ -1,15 +1,44 @@
+function hasCacheExpired() {
+  /*
+   This function is not necessary but I'm creating it incase
+   I make a change in the future and I do not remember to clear cache
+
+   Clears the localstorage after every 30 minutes upon new requests
+   */
+  const setupTime = new Date(localStorage.getItem("rcf:setupTime"));
+  if (!setupTime) return true;
+
+  const currentTime = new Date();
+
+  if (currentTime.getFullYear() > setupTime.getFullYear()) {
+    return true;
+  } else if (currentTime.getMonth() > setupTime.getMonth()) {
+    return true;
+  } else if (currentTime.getDate() > setupTime.getDate()) {
+    return true;
+  } else if (currentTime.getHours() > setupTime.getHours()) {
+    return true;
+  } else if (currentTime.getMinutes() - setupTime.getMinutes() > 30) {
+    return true;
+  }
+
+  return false;
+}
+
 export async function getCountries(q, region) {
   let countries;
 
-  const cachedCountries = JSON.parse(localStorage.getItem("countries"));
-  if (cachedCountries && cachedCountries.length > 0) {
+  const cachedCountries = JSON.parse(localStorage.getItem("rcf:countries"));
+  const cacheExpired = hasCacheExpired();
+  if (cachedCountries && !cacheExpired) {
     countries = cachedCountries;
-  } else if (!cachedCountries || cachedCountries.length <= 0) {
+  } else if (cacheExpired || !cachedCountries) {
     const request = await fetch(
       "https://restcountries.com/v3.1/all?fields=name,cca3,flags,population,region,capital",
     );
     countries = await request.json();
-    localStorage.setItem("countries", JSON.stringify(countries));
+    localStorage.setItem("rcf:countries", JSON.stringify(countries));
+    localStorage.setItem("rcf:setupTime", new Date());
   } else {
     countries = [];
   }
@@ -33,7 +62,7 @@ export async function getCountries(q, region) {
 }
 
 export function getRegions(countries) {
-  let cachedRegions = JSON.parse(localStorage.getItem("regions"));
+  let cachedRegions = JSON.parse(localStorage.getItem("rcf:regions"));
   if (cachedRegions && cachedRegions.length > 0) {
     return cachedRegions;
   }
@@ -44,7 +73,7 @@ export function getRegions(countries) {
     }),
   );
 
-  localStorage.setItem("regions", JSON.stringify(Array.from(regions)));
+  localStorage.setItem("rcf:regions", JSON.stringify(Array.from(regions)));
   return Array.from(regions);
 }
 
