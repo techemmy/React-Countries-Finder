@@ -7,8 +7,12 @@ export default function Header() {
         <Link to="/">
           <h1>Where in the world?</h1>
         </Link>
-        <button type="button" className="curved__border" id="mode__toggler">Dark Mode</button>
+
+        <button type="button" id="mode__toggler" className="curved__border">
+          <input id="color__scheme" type="checkbox" />
+          <span>Dark Mode</span>
+        </button>
       </nav>
-    </header>
+    </header >
   )
 }

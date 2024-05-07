@@ -11,7 +11,9 @@
   --dark-bg: hsl(0, 0%, 98%);
   --light-bg: var(--white);
 
-  color-scheme: light dark;
+  --color-scheme: light;
+
+  color-scheme: var(--color-scheme) light;
   color: var(--text-color);
   background-color: var(--light-bg);
 
@@ -19,6 +21,27 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  &:has(#color__scheme:checked) {
+    color-scheme: dark;
+    --text-color: var(--white);
+    --dark-bg: hsl(207, 26%, 17%);
+    --light-bg: hsl(211.3deg 20.72% 21.76%);
+    --shadow-color: hsl(207, 21%, 14%);
+    --input-color: var(--white);
+
+    input {
+      background-image: url("../magnifying-glass-solid-light.svg");
+    }
+
+    #mode__toggler {
+      background-image: url("../moon-solid.svg");
+    }
+
+    #back__btn {
+      background-image: url("../arrow-left-light.svg");
+    }
+  }
 }
 
 * {
@@ -151,6 +174,21 @@ header nav {
   display: flex;
   justify-content: space-between;
   padding: 1.5rem 0rem;
+}
+
+#mode__toggler {
+  position: relative;
+  cursor: pointer;
+}
+
+#mode__toggler #color__scheme {
+  position: absolute;
+  opacity: 0;
+}
+#mode__toggler #color__scheme,
+#mode__toggler div {
+  width: 100%;
+  height: 100%;
 }
 
 #mode__toggler {
@@ -309,13 +347,33 @@ span.country__card__title {
   width: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  transition-duration: 0s;
+}
+
+@media (prefers-color__scheme: dark) {
+  :root:has(#color__scheme:checked) {
+    color-scheme: dark;
     --text-color: var(--white);
     --dark-bg: hsl(207, 26%, 17%);
     --light-bg: hsl(211.3deg 20.72% 21.76%);
     --shadow-color: hsl(207, 21%, 14%);
     --input-color: var(--white);
+  }
+
+  &:has(#color__scheme:checked) {
+    color-scheme: light;
+    input {
+      background-image: url("../magnifying-glass-solid.svg");
+    }
+
+    #mode__toggler {
+      background-image: url("../moon-regular.svg");
+    }
+
+    #back__btn {
+      background-image: url("../arrow-left.svg");
+    }
   }
 
   input {
