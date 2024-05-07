@@ -8,6 +8,7 @@ export default function Search({ q }) {
       id="search__input"
       type="text"
       name="q"
+      role="search"
       className="feint__shadow curved__border"
       placeholder="Search for a country..."
       defaultValue={q}

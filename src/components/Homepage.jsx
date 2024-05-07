@@ -1,4 +1,4 @@
-import { Form, useLoaderData, useNavigation } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
 import CountryCardList from "./CountryCardList";
 import FilterSelect from "./FilterSelect";
 import Search from "./Search";
@@ -6,7 +6,7 @@ import React from "react";
 
 
 export default function Homepage() {
-  const { countries, regions, q, region } = useLoaderData();
+  const { countries, regions, q, region: filter } = useLoaderData();
   let response;
 
   if (countries.length > 0) {
@@ -17,7 +17,6 @@ export default function Homepage() {
 
   React.useEffect(() => {
     document.getElementById('search__input').value = q;
-    document.getElementById('region__filter').value = "";
   }, [q])
 
   return (
@@ -25,7 +24,7 @@ export default function Homepage() {
       <section>
         <Form id="search__and__filter">
           <Search q={q} />
-          <FilterSelect regions={regions} region={region} />
+          <FilterSelect regions={regions} filter={filter} />
         </Form>
 
         <section id="countries__list">

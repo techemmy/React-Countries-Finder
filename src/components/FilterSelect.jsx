@@ -1,7 +1,7 @@
 import { useSubmit } from "react-router-dom"
 import PropTypes from "prop-types";
 
-export default function FilterSelect({ regions, region = "" }) {
+export default function FilterSelect({ regions, filter }) {
   const submit = useSubmit()
   return (
     <select
@@ -9,7 +9,8 @@ export default function FilterSelect({ regions, region = "" }) {
       name="region"
       id="region__filter"
       onChange={(e) => submit(e.target.form)}
-      defaultValue={region}
+      value={filter ?? ""}
+      role="filter"
     >
       <option value="">Filter by Region</option>
       {regions.map(region => {
