@@ -182,6 +182,7 @@ header nav {
 }
 
 #mode__toggler #color__scheme {
+  cursor: pointer;
   position: absolute;
   opacity: 0;
 }
