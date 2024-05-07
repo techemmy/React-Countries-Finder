@@ -1,4 +1,4 @@
-import { useNavigate, useLoaderData } from 'react-router-dom';
+import { useNavigate, useLoaderData, Link } from 'react-router-dom';
 
 export default function CountryPage() {
   const navigate = useNavigate()
@@ -40,7 +40,14 @@ export default function CountryPage() {
             <span className="country__card__title">Border Countries: </span>
             {country.borders.length <= 0 ? "-" : null}
             {country.borders.map((border) => {
-              return <button key={`border-${border}`}>{border}</button>
+              return (
+                <Link
+                  key={`border-${border.borderName}`}
+                  to={`/country/${border.borderCountryCode}`}
+                >
+                  <button>{border.borderName}</button>
+                </Link>
+              )
             })}
           </div>
         </aside>

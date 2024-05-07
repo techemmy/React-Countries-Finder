@@ -5,6 +5,7 @@ export default function CountryCardList({ countries }) {
     countries = countries.map(country => {
       return <CountryCard
         key={`country ${country.name.common}`}
+        cca3={country.cca3}
         name={country.name.common}
         region={country.region}
         capital={country.capital.toString()}

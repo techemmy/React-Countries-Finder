@@ -6,7 +6,7 @@ export async function getCountries(q, region) {
     countries = cachedCountries;
   } else if (!cachedCountries || cachedCountries.length <= 0) {
     const request = await fetch(
-      "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital",
+      "https://restcountries.com/v3.1/all?fields=name,cca3,flags,population,region,capital",
     );
     countries = await request.json();
     localStorage.setItem("countries", JSON.stringify(countries));
@@ -48,11 +48,11 @@ export function getRegions(countries) {
   return Array.from(regions);
 }
 
-export async function getCountry(countryName) {
+export async function getCountry(countryCode) {
   const request = await fetch(
-    `https://restcountries.com/v3.1/name/${countryName}?fields=name,flags,languages,population,region,subregion,capital,tld,currencies,borders`,
+    `https://restcountries.com/v3.1/alpha/${countryCode}?fields=name,flags,languages,population,region,subregion,capital,tld,currencies,borders`,
   );
-  const country = (await request.json())[0];
+  const country = await request.json();
   if (country == undefined) return { country };
 
   country.nativeName = Object.values(country.name.nativeName).map(
@@ -64,15 +64,17 @@ export async function getCountry(countryName) {
     .join(", ");
   country.languages = Object.values(country.languages);
 
-  let borderNames = [];
+  let borders = [];
   for await (const border of country.borders) {
-    const borderName = await fetch(
-      `https://restcountries.com/v3.1/alpha/${border}?fields=name`,
+    const request = await fetch(
+      `https://restcountries.com/v3.1/alpha/${border}?fields=name,cca3`,
     );
-    const name = (await borderName.json()).name.common;
-    borderNames.push(name);
+    const borderDetails = await request.json();
+    const borderName = borderDetails.name.common;
+    const borderCountryCode = borderDetails.cca3;
+    borders.push({ borderName, borderCountryCode });
   }
-  country.borders = borderNames;
+  country.borders = borders;
 
   return { country };
 }

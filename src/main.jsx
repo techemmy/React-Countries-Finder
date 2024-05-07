@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             loader: countryCardListLoader,
           },
           {
-            path: '/country/:countryName',
+            path: '/country/:countryCode',
             element: <CountryPage />,
             loader: countryPageLoader,
           }
