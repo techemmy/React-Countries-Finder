@@ -10,7 +10,7 @@ export default function FilterSelect({ regions, filter }) {
       id="region__filter"
       onChange={(e) => submit(e.target.form)}
       value={filter ?? ""}
-      role="filter"
+      aria-label="Filter"
     >
       <option value="">Filter by Region</option>
       {regions.map(region => {
@@ -22,5 +22,5 @@ export default function FilterSelect({ regions, filter }) {
 
 FilterSelect.propTypes = {
   regions: PropTypes.array.isRequired,
-  region: PropTypes.string,
+  filter: PropTypes.string,
 }

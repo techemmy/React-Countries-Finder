@@ -70,7 +70,8 @@ a {
   height: 100%;
 }
 
-button {
+button,
+#mode__toggler {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,10 +84,12 @@ button {
   padding-left: 3.5rem;
   background-position: 1.5rem center;
 }
-button:hover {
+button:hover,
+#mode__toggler:hover {
   box-shadow: 0 3px 3px var(--dark-bg);
 }
-button:active {
+button:active,
+#mode__toggler:hover {
   background-color: var(--dark-bg);
 }
 
@@ -175,6 +178,8 @@ header nav {
 }
 
 #mode__toggler {
+  font-size: 0.9rem;
+  font-weight: 600;
   position: relative;
   cursor: pointer;
 }
@@ -272,9 +277,10 @@ img.country__img {
   font-weight: 300;
 }
 
-.country__card__info h3 {
+.country__card__info h2 {
   margin: 0.7rem 0;
   font-weight: 800;
+  font-size: 1.15rem;
 }
 
 span.country__card__title {

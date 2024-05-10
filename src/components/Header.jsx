@@ -8,10 +8,10 @@ export default function Header() {
           <h1>Where in the world?</h1>
         </Link>
 
-        <button type="button" id="mode__toggler" className="curved__border">
+        <div type="button" id="mode__toggler" className="curved__border">
           <input id="color__scheme" type="checkbox" />
-          <span>Dark Mode</span>
-        </button>
+          <label htmlFor="color__scheme">Dark Mode</label>
+        </div>
       </nav>
     </header >
   )

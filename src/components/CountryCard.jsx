@@ -9,7 +9,7 @@ export default function CountryCard({ name, cca3, population, region, capital, i
           <img className="country__img" loading="lazy" src={imageURL} alt={`${name} logo`} />
         </div>
         <article className="country__card__info">
-          <h3>{name}</h3>
+          <h2>{name}</h2>
           <p><span className="country__card__title">Population:</span> {population || '-'}</p>
           <p><span className="country__card__title">Region:</span> {region || '-'}</p>
           <p><span className="country__card__title">Capital:</span> {capital || '-'}</p>
