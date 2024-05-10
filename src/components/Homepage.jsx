@@ -21,17 +21,17 @@ export default function Homepage() {
 
   return (
     <>
-      <section>
+      <aside>
         <Form id="search__and__filter">
           <Search q={q} />
           <FilterSelect regions={regions} filter={filter} />
         </Form>
 
-        <section id="countries__list">
+        <div id="countries__list">
           <CountryCardList countries={response} />
-        </section>
+        </div>
 
-      </section>
+      </aside>
     </>
   )
 }
